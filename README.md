@@ -1,49 +1,58 @@
 # Rivet UI
 
-Live demo: [https://storybook-library.ramzy.tech/](https://storybook-library.ramzy.tech/)
+A reusable React component library with an interactive Storybook and a composed dashboard example. Explore individual controls, their states, and the layouts they form together.
 
+**[Open the live demo](https://storybook-library.ramzy.tech/)** · [Developer guide](DEVELOPMENT.md)
 
-A general-purpose component workbench built with Next.js, React, TypeScript, and Storybook. The composed workspace demonstrates the primitives together; Storybook documents them in isolation.
+## What you can explore
 
-## Included
+- Buttons, forms, feedback, navigation, identity, overlays, and disclosure components.
+- Data tables, filters, tabs, metrics, cards, and dashboard layouts.
+- Stories for component states and a composed workspace.
+- Shared design tokens, responsive behavior, keyboard interactions, and reduced-motion support.
 
-- Responsive application shell with sidebar, mobile navigation, command palette, header, and footer
-- KPI strip, project cards, filter bar, tabs, badges, buttons, and empty states
-- Sortable and selectable data table with a mobile card presentation
-- Native-dialog slide-over drawer with focus management and Escape handling
-- Storybook stories for foundations, component states, patterns, and the full workspace
-- Local variable fonts, semantic OKLCH tokens, reduced-motion support, and accessible focus states
+## Try the demo
+
+1. Open the live Storybook and inspect the composed workspace.
+2. Choose a component from the sidebar and compare its examples and states.
+3. Try the interactive controls and view the foundations for typography, colour, and spacing.
+
+## Technology
+
+React, TypeScript, Storybook, Vinext/Next.js App Router, CSS design tokens, and Lucide icons.
 
 ## Run locally
 
-```bash
-npm install
-npm run dev
-```
+Use Node.js 24 and npm. No account, API key, or backend service is required. Start the component library directly:
 
-Open `http://localhost:3000`.
-
-Start Storybook separately:
-
-```bash
+```sh
+git clone https://github.com/mena234/rivet-ui.git
+cd rivet-ui
+npm ci
 npm run storybook
 ```
 
-Open `http://localhost:6006`.
+Open **http://localhost:6006/**. To run the app wrapper that embeds Storybook, first generate the files it serves:
 
-## Quality checks
+```sh
+npm run build-storybook:public
+npm run dev
+```
 
-```bash
+Open the app address printed by the server. The wrapper loads `/storybook/index.html`, so it requires that first build step. `npm run build` builds both Storybook and the application. `npm run build-storybook` creates a standalone `storybook-static/` directory.
+
+## Checks
+
+```sh
 npm run lint
 npm run typecheck
 npm run build
-npm run build-storybook
 ```
 
-Import components from the barrel when working inside this repository:
+## Scope and limitations
 
-```tsx
-import { Badge, Button, DataTable, Drawer, Tabs } from "@/components/ui";
-```
+Dashboard records are sample presentation data. The repository supplies reusable source components; it is not a published npm package or a connected business dashboard. Review and adapt component behavior for your application.
 
-Design tokens live in `tokens.css`; component styles live in `components/ui/ui.css`.
+## More detail
+
+See the [developer guide](DEVELOPMENT.md) for imports and styling, [component source](components/ui/), [stories](stories/), and [design tokens](tokens.css).
